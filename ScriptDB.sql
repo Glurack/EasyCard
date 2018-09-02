@@ -1,5 +1,6 @@
 CREATE DATABASE EasyCardDB;
 
+
 CREATE TABLE Cliente (
 	Nombre char(100),
 	Correo char(100),
@@ -34,7 +35,7 @@ CREATE TABLE Registro_de_uso (
 
 CREATE TABLE Tienda (
 	Nombre char(100),
-	Codigo serial,
+	Codigo char(30),
 	PRIMARY KEY (Codigo)
 );
 
@@ -46,10 +47,12 @@ CREATE TABLE donde_se_uso (
 	FOREIGN KEY (ID_de_transaccion) REFERENCES Registro_de_uso
 );
 
-//SOLO PARA REFERENCIA// 
 INSERT INTO Cliente (Nombre, Correo, DPI_Cliente, NIT, Telefono) 
 VALUES ('Santiago', 'hola@gmail.com', '1234567859101', '1234567', '+50240471193');
 
 INSERT INTO Tarjeta (Numero_de_tarjeta, Tipo_de_tarjeta, Nombre_del_propietario, 
 	Numero_de_seguridad, Monto_Autorizado, Fecha_de_vencimiento, Monto_gastado, DPI_Cliente) 
 VALUES ('1234123412341234', '0', 'Victor', '123', 5000, '2008-11-11', 0, '1234567859101');
+
+INSERT INTO Tienda (nombre. codigo) 
+VALUES ('Tienda_test', '01');
