@@ -84,31 +84,6 @@ while ($line = pg_fetch_row($result)) {
    
 }
 
-if ($status === 'APROBADO'){
-	//Tipo_de_Transaccion = 0 si se quita dinero
-	$fechaActual = getdate();
-	$queryInsertRegistro = "INSERT INTO Registro_de_uso VALUES($monto, $fechaActual, 0, $tarjeta)";
-	if (is_int($tienda)){ //si nos mandan el codigo de la tienda
-		$verificarTienda = "SELECT * FROM Tienda WHERE Codigo = $tienda";
-	}
-	else{ //si mandan el nombre
-		$verificarTienda = "SELECT * FROM Tienda WHERE Nombre = '$tienda'";
-	}
-	if (pg_num_rows(pg_query($link, $verificarTienda)) == 0) {
-		$status = 'DENEGADO'; //No existe esa tienda.
-	}
-	else{
-		$actualizarTarjeta = "UPDATE Tarjeta SET Monto_gastado = Monto_gastado + $monto WHERE Numero_de_tarjeta = $tarjeta";
-		$queryInsertRegistro = "INSERT INTO Registro_de_uso VALUES($monto, $fechaActual, 0, $tarjeta)";
-		$lugarDeUso = "INSERT INTO donde_se_uso VALUES($tienda)";
-		pg_query($link, $actualizarTarjeta) or die('Query failed: ' . pg_last_error());
-		pg_query($link, $queryInsertRegistro) or die('Query failed: ' . pg_last_error());
-		pg_query($link, $lugarDeUso) or die('Query failed: ' . pg_last_error());
-		$NumeroAutorizacion = rand(1000,9999); //Numero de 4 digitos.
-	}
-	
-}
-
 if($formato === "XML" || $formato === "xml" || $formato === 0){
 	echo "\t<autorizacion>\n";  
 	echo "\t\t<emisor>EasyCard</emisor>\n"; 
