@@ -45,9 +45,13 @@ while ($line = pg_fetch_row($result)) {
 	if ($Numero_de_tarjeta === $tarjeta && $num_seguridad === $Numero_de_seguridad){
 		$Monto_Disponible = $Monto_Autorizado-$Monto_gastado;
 		if ($Monto_Disponible >= $monto){
+			//verificamos que la tarjeta no este vencida
 			$fechaActual = date("Y-m-d");
-
-			echo "$Fecha_de_vencimiento == $fechaActual <br><br>";
+			if((int)substr($fecha_venc,0,4) < (int)substr($fechaActual,0,4) ){
+				$status = 'DENEGADO';
+			}else if((int)substr($fecha_venc,5,2) < (int)substr($fechaActual,5,2)){
+				$status = 'DENEGADO'; 
+			}
 			//si nos mandan el codigo de la tienda
 			$verificarTienda = "SELECT * FROM Tienda WHERE Codigo = $tienda"; 
 			//si nos mandan el nombre de la tienda
@@ -60,7 +64,7 @@ while ($line = pg_fetch_row($result)) {
 				}
 			}
 
-			if (pg_num_rows(pg_query($link, $verificarTienda)) == 0) {
+			if ((pg_num_rows(pg_query($link, $verificarTienda)) == 0) || ($status === 'DENEGADO'))  {
 				$status = 'DENEGADO'; //No existe esa tienda.
 			}else{
 				$status = 'APROBADO';

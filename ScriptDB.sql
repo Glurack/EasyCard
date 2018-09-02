@@ -54,5 +54,5 @@ INSERT INTO Tarjeta (Numero_de_tarjeta, Tipo_de_tarjeta, Nombre_del_propietario,
 	Numero_de_seguridad, Monto_Autorizado, Fecha_de_vencimiento, Monto_gastado, DPI_Cliente) 
 VALUES ('1234123412341234', '0', 'Victor', '123', 5000, '2008-11-11', 0, '1234567859101');
 
-INSERT INTO Tienda (nombre. codigo) 
-VALUES ('Tienda_test', '01');
+INSERT INTO Tienda (nombre, codigo) 
+VALUES ('Tienda_test','01');

@@ -5,6 +5,35 @@
      </title>
   </head>
   <body>
+      <b>Solicitar una tarjeta<b><br><br>
+     <form action="Tarjeta_solicitada.php" method="post">
+      <b>Nombre</b>&nbsp;
+       <input type="text" placeholder="Ingrese su nombre completo" name="Nombre">
+       <br><br>
+      <b>Correo</b>&nbsp;&nbsp;
+        <input type="text" placeholder="Ingrese su correo electronico" name="correo" >
+        <br><br>
+      <b>DPI</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text"  placeholder="Ingrese el codigo de su DPI" name="DPI" >
+       <br><br>
+      <b>Nit</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" placeholder="Ingrese su numero de nit" name="nit" >
+       <br><br>
+      <b>Telefono</b>
+       <input type="text" placeholder="Ingrese su numero de telefono" name="tel" >
+       <br><br>
+      <b>tipo de tarjeta</b>
+      <select style="height:20px;width:134px;font-size:10pt;" name="tipo">
+        <option value="C">Credito</option>
+        <option value="D">Debito</option>
+      </select>
+      <br><br>
+      <input type="submit" name="solicitar" value="Solicitar" style="height:50px; width:150px;font-size:16pt;"/>
+    </form>
+    <hr>
+
+
+    <b>Hacer una compra<br><br>
     <form action="autorizacion.php" method="post">
       <b>Numero de la tarjeta</b>&nbsp;
        <input type="text" placeholder="Ingrese el numero en su tarjeta" name="tarjeta">
@@ -27,7 +56,7 @@
       <b>Formato</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <input type="text" placeholder="Ingrese el formato en el que se usara el web service" name="formato" >
        <br><br>
-      <input type="submit" name="submit" value="Enviar" style="height:50px; width:150px;font-size:16pt;"/>
+      <input type="submit" name="Enviar" value="Enviar" style="height:50px; width:150px;font-size:16pt;"/>
     </form>
 	<?php
 
